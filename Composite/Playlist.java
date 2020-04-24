@@ -10,22 +10,14 @@ public class Playlist implements IComponent {
     public Playlist(String playlistName) {
         this.playlistName = playlistName;
         this.playlist = new ArrayList<IComponent>();
+        System.out.println("Playlist " + playlistName + " is created");
     }
 
     public void play() {
-        System.out.println("Play " + this.playlistName + ":");
+        System.out.println("Play playlist " + this.playlistName + ":");
 
         for (IComponent component: this.playlist) {
-            System.out.println(component.getName());
-        }
-
-        System.out.println();
-    };
-
-    public void setPlaybackSpeed(float speed) {
-        System.out.println("Set playback speed " + speed + " to " + this.getName() + "\n");
-        for (IComponent component: this.playlist) {
-            component.setPlaybackSpeed(speed);
+            component.play();
         }
     };
 
@@ -35,7 +27,7 @@ public class Playlist implements IComponent {
 
     public void add(IComponent component) {
         this.playlist.add(component);
-        System.out.println("Add " + component.getName() + " to " + this.getName() + "\n");
+        System.out.println("Add " + component.getName() + " to " + this.getName());
     }
 
     public void remove(IComponent component) {
